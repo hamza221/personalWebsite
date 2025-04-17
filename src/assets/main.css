@@ -1,5 +1,5 @@
 :root {
-  --tertiary-color: rgb(209 213 219);
+  --tertiary-color: silver;
   --border-white-color: rgb(255 255 255);
   --background-main: rgb(0 128 128);
   --button-border-color: rgb(156 163 175);
@@ -21,6 +21,10 @@
   padding: 0px;
   margin: 0px;
   font-family: "px_sans_nouveaux";
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 img {
   height: 100%;

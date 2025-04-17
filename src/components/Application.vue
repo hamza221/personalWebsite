@@ -1,5 +1,5 @@
 <template>
-  <button ref="app" @dragstart.prevent class="app">
+  <button ref="item" @dragstart.prevent class="app" @click="handleClick">
     <div class="icon">
       <slot name="icon"></slot>
     </div>
@@ -33,79 +33,38 @@
 }
 </style>
 <script>
+import Draggable from '@/Mixins/Draggable'
+import eventBus from '@/eventBus'
+
 export default {
   name: 'Application',
+  mixins: [Draggable],
   props: {
-    x: {
-      type: Number,
-      required: true,
-    },
-    y: {
-      type: Number,
+    name: {
+      type: String,
       required: true,
     },
   },
   data() {
     return {
-      app: null,
-      parent: null,
+      count: 0,
+      clickTimer: null,
     }
   },
-
-  mounted() {
-    ;(this.app = this.$refs.app), (this.parent = this.$refs.app.parentElement)
-    this.drag()
-    this.app.style.left = `${this.x}px`
-    this.app.style.top = `${this.y}px`
-    window.addEventListener('resize', this.handleWindowResize)
-  },
   methods: {
-    handleWindowResize() {
-      if (
-        parseInt(this.app.style.left.split('px')[0]) + this.app.clientWidth >
-        this.parent.clientWidth
-      ) {
-        this.app.style.left = `${this.parent.clientWidth - this.app.clientWidth}px`
+    handleClick() {
+      this.count += 1
+      if (this.count === 2) {
+        eventBus.emit('openApp', { name: this.name })
+        console.log(this.name)
+        this.count = 0
       }
-      if (parseInt(this.app.style.top.split('px')[0]) > this.parent.clientY) {
-        this.app.style.top = `${this.parent.clientHeight - this.app.clientHeight}px`
-      }
-    },
-    drag() {
-      const self = this
-      this.app.addEventListener('mousedown', () => {
-        document.addEventListener('mousemove', move)
-        document.addEventListener('mouseup', stop)
-      })
-      function move(e) {
-        moveLeft(e)
-        moveTop(e)
-      }
-
-      function stop() {
-        document.removeEventListener('mousemove', move)
-        document.removeEventListener('mouseup', stop)
-      }
-      function moveLeft(e) {
-        if (e.clientX + self.app.clientWidth > self.parent.clientWidth) {
-          self.app.style.left = `${self.parent.clientWidth - self.app.clientWidth}px`
-        } else if (e.clientX < 0) {
-          self.app.style.left = `0px`
-        } else {
-          self.app.style.left = `${e.clientX}px`
+      window.clearTimeout(this.clickTimer)
+      this.clickTimer = setTimeout(() => {
+        if (this.count < 2) {
+          this.count = 0
         }
-      }
-      function moveTop(e) {
-        if (e.clientY + self.app.clientHeight > self.parent.clientHeight) {
-          self.app.style.top = `${self.parent.clientHeight - self.app.clientHeight}px`
-          return
-        } else if (e.clientY < 0) {
-          self.app.style.top = `0px`
-          return
-        } else {
-          self.app.style.top = `${e.clientY}px`
-        }
-      }
+      }, 500)
     },
   },
 }

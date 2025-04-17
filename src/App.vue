@@ -17,25 +17,25 @@ const toggleStartMenu = () => {
     <ToolBar @toggle-start-menu="toggleStartMenu" />
     <Body></Body>
     <StartMenu v-if="isStartMenuOpen">
-      <MenuButton>
+      <MenuButton name="resume">
         <template #icon>
           <img src="./assets/resume.png" alt="resume Icon" />
         </template>
         About me
       </MenuButton>
-      <MenuButton>
+      <MenuButton name="contact">
         <template #icon>
           <img src="./assets/contact.png" alt="resume Icon" />
         </template>
         Contact
       </MenuButton>
-      <MenuButton>
+      <MenuButton name="browser">
         <template #icon>
           <img src="./assets/internet.png" alt="resume Icon" />
         </template>
         Browser
       </MenuButton>
-      <MenuButton>
+      <MenuButton name="photo">
         <template #icon>
           <img src="./assets/photgraphy.png" alt="resume Icon" />
         </template>

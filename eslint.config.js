@@ -11,7 +11,9 @@ export default [
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: {
-        process: 'readonly'
+        process: 'readonly',
+        window: 'readonly',
+        document: 'readonly',
       }
     }
   },
