@@ -13,6 +13,7 @@ export default {
         return {
           item: null,
           parent: null,
+          oldLeft: 0,
         }
       },
     mounted() {
@@ -50,13 +51,14 @@ export default {
           document.removeEventListener('mouseup', stop)
         }
         function moveLeft(e) {
-          if (e.clientX + self.item.clientWidth > self.parent.clientWidth) {
+          if (self.item.offsetLeft + self.item.clientWidth > self.parent.clientWidth) {
             self.item.style.left = `${self.parent.clientWidth - self.item.clientWidth}px`
-          } else if (e.clientX < 0) {
+          } else if (self.item.offsetLeft < 0) {
             self.item.style.left = `0px`
-          } else {
-            self.item.style.left = `${e.clientX}px`
+          } else if(self.oldLeft !== 0) {
+            self.item.style.left = `${self.item.offsetLeft + (e.clientX -self.oldLeft )}px`
           }
+          self.oldLeft = e.clientX
         }
         function moveTop(e) {
           if (e.clientY + self.item.clientHeight > self.parent.clientHeight) {
