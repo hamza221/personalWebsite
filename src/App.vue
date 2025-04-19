@@ -35,7 +35,7 @@ const toggleStartMenu = () => {
         </template>
         Browser
       </MenuButton>
-      <MenuButton name="photo">
+      <MenuButton name="photography">
         <template #icon>
           <img src="./assets/photgraphy.png" alt="resume Icon" />
         </template>

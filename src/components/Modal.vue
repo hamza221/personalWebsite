@@ -1,16 +1,21 @@
 <template>
-  <div class="Modal" :class="{ fullscreen: fullscreen }" @dragstart.prevent ref="item">
+  <div
+    class="Modal"
+    :class="{ fullscreen: fullscreen, minimized: minimized }"
+    @dragstart.prevent
+    ref="item"
+  >
     <div class="Modal__header">
       <h1 class="Modal__header__title">{{ title }}</h1>
       <div class="Modal__header__actions">
-        <button class="Modal__header__actions__action" @click="$emit('close')">
-          <slot name="close"></slot>
-        </button>
-        <button class="Modal__header__actions__action" @click="$emit('minimize')">
-          <slot name="minimize"></slot>
+        <button class="Modal__header__actions__action" @click="handleClose">
+          <img src="@/assets/close.png" alt="Close" />
         </button>
         <button class="Modal__header__actions__action" @click="handleMaximize">
-          <slot name="maximize"></slot>
+          <slot name="minimize"></slot>
+        </button>
+        <button class="Modal__header__actions__action" @click="handleMinimize">
+          <span>-</span>
         </button>
       </div>
     </div>
@@ -21,6 +26,7 @@
 </template>
 <script>
 import Draggable from '@/Mixins/Draggable'
+import eventBus from '@/eventBus'
 export default {
   name: 'Modal',
   mixins: [Draggable],
@@ -28,6 +34,10 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    minimized: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -40,6 +50,12 @@ export default {
       this.fullscreen = !this.fullscreen
       this.$emit('maximize', this.fullscreen)
     },
+    handleClose() {
+      eventBus.emit('closeApp', { name: this.title.toLowerCase() })
+    },
+    handleMinimize() {
+      eventBus.emit('minimizeApp', { name: this.title.toLowerCase() })
+    },
   },
 }
 </script>
@@ -48,8 +64,11 @@ export default {
   width: 100% !important;
   height: 100% !important;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0 !important;
+  left: 0 !important;
+}
+.minimized {
+  display: none !important;
 }
 .Modal {
   pointer-events: auto;
@@ -59,7 +78,11 @@ export default {
   height: 50%;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #c6c6c6;
+  border-top: 2px solid #efefef;
+  border-left: 2px solid #efefef;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
   &__header {
     display: flex;
     justify-content: space-between;
@@ -75,7 +98,23 @@ export default {
     }
     &__actions {
       display: flex;
+      flex-direction: row-reverse;
       gap: 0.5rem;
+      &__action {
+        color: #000;
+        background-color: silver;
+        height: 16px;
+        width: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        appearance: none;
+        border-left: 2px solid #ededed;
+        border-top: 2px solid #ededed;
+        border-right: 2px solid #404040;
+        border-bottom: 2px solid #404040;
+      }
     }
   }
 }

@@ -16,7 +16,7 @@
         <p class="app-name">Browser</p>
       </template>
     </Application>
-    <Application :x="210" :y="10" name="photo">
+    <Application :x="210" :y="10" name="photography">
       <template #icon>
         <img src="../assets/photgraphy.png" alt="Windows 11 Logo" />
       </template>

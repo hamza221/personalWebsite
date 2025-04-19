@@ -1,12 +1,13 @@
-import eslint from '@eslint/js';
-import eslintPluginVue from 'eslint-plugin-vue';
-import prettierPlugin from 'eslint-plugin-prettier';
-import vueParser from 'vue-eslint-parser';
+import eslint from '@eslint/js'
+import eslintPluginVue from 'eslint-plugin-vue'
+import prettierPlugin from 'eslint-plugin-prettier'
+import vueParser from 'vue-eslint-parser'
 
 export default [
   eslint.configs.recommended,
   {
     files: ['**/*.js'],
+    ignores: ['dist/**', 'node_modules/**', 'build/**'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -14,8 +15,27 @@ export default [
         process: 'readonly',
         window: 'readonly',
         document: 'readonly',
-      }
-    }
+        console: 'readonly',
+      },
+    },
+    plugins: {
+      prettier: prettierPlugin,
+    },
+    rules: {
+      'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          semi: false,
+          tabWidth: 2,
+          trailingComma: 'es5',
+          printWidth: 100,
+          endOfLine: 'auto',
+        },
+      ],
+    },
   },
   {
     files: ['**/*.vue'],
@@ -29,31 +49,34 @@ export default [
         console: 'readonly',
         setTimeout: 'readonly',
         setInterval: 'readonly',
-        process: 'readonly'
+        process: 'readonly',
       },
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
-        }
-      }
+          jsx: true,
+        },
+      },
     },
     plugins: {
       vue: eslintPluginVue,
-      prettier: prettierPlugin
+      prettier: prettierPlugin,
     },
     rules: {
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'vue/multi-word-component-names': 'off',
       'vue/require-default-prop': 'off',
-      'prettier/prettier': ['error', {
-        singleQuote: true,
-        semi: false,
-        tabWidth: 2,
-        trailingComma: 'es5',
-        printWidth: 100,
-        endOfLine: 'auto'
-      }]
-    }
-  }
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          semi: false,
+          tabWidth: 2,
+          trailingComma: 'es5',
+          printWidth: 100,
+          endOfLine: 'auto',
+        },
+      ],
+    },
+  },
 ]
