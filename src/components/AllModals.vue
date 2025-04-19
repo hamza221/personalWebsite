@@ -36,6 +36,10 @@ eventBus.on('closeApp', (payload) => {
   const app = payload.name
   modalsStore.closeModal(app)
 })
+eventBus.on('unMinimizeApp', (payload) => {
+  const app = payload.name
+  modalsStore.minimizeModal(app, false)
+})
 </script>
 <style lang="scss" scoped>
 .container {

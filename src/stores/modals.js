@@ -20,6 +20,9 @@ export const useModalsStore = defineStore('modals', {
     getModal: (state) => {
       return (name) => state.modals.find((modal) => modal.name === name)
     },
+    getAllMinimized: (state) => {
+      return state.modals.filter((modal) => modal.isMinimized).map((modal) => modal.name)
+    },
   },
   actions: {
     openModal(name) {
