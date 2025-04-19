@@ -12,7 +12,7 @@
           <img src="@/assets/close.png" alt="Close" />
         </button>
         <button class="Modal__header__actions__action" @click="handleMaximize">
-          <slot name="minimize"></slot>
+          <div class="Modal__header__actions__action__maximize"></div>
         </button>
         <button class="Modal__header__actions__action" @click="handleMinimize">
           <span>-</span>
@@ -114,6 +114,11 @@ export default {
         border-top: 2px solid #ededed;
         border-right: 2px solid #404040;
         border-bottom: 2px solid #404040;
+        &__maximize {
+          height: 8px;
+          width: 8px;
+          border: 2px solid black;
+        }
       }
     }
   }
