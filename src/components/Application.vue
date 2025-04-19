@@ -56,7 +56,6 @@ export default {
       this.count += 1
       if (this.count === 2) {
         eventBus.emit('openApp', { name: this.name })
-        console.log(this.name)
         this.count = 0
       }
       window.clearTimeout(this.clickTimer)

@@ -27,7 +27,6 @@ eventBus.on('minimizeApp', (payload) => {
   modalsStore.minimizeModal(app, true)
 })
 eventBus.on('openApp', (payload) => {
-  console.log('openApp', payload)
   const app = payload.name
   modalsStore.minimizeAllExcept(app)
   modalsStore.openModal(app)
