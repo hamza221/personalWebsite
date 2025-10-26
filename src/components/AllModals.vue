@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <Modal v-if="contact" title="Contact" :minimized="contactsMinimized"> </Modal>
+    <Modal v-if="contact" title="Contact" :minimized="contactsMinimized">
+      <template #content>
+        <Contact />
+      </template>
+    </Modal>
     <Modal v-if="internet" title="Browser" :minimized="browserMinimized"> </Modal>
     <Modal v-if="photography" title="Photography" :minimized="photographyMinimized"> </Modal>
     <Modal v-if="resume" title="Resume" :minimized="resumeMinimized"> </Modal>
@@ -8,6 +12,7 @@
 </template>
 <script setup>
 import Modal from './Modal.vue'
+import Contact from '../pages/Contact.vue'
 import eventBus from '@/eventBus'
 import { computed } from 'vue'
 import { useModalsStore } from '@/stores/modals'

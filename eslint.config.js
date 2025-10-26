@@ -16,6 +16,8 @@ export default [
         window: 'readonly',
         document: 'readonly',
         console: 'readonly',
+        XMLHttpRequest: 'readonly',
+        XDomainRequest: 'readonly',
       },
     },
     plugins: {
