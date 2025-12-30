@@ -21,7 +21,7 @@
 <script setup>
 import Modal from './Modal.vue'
 import Contact from '../pages/Contact.vue'
-import Website from '../pages/website.vue'
+import Website from '../pages/Website.vue'
 import Resume from '../pages/Resume.vue'
 import eventBus from '@/eventBus'
 import { computed } from 'vue'
