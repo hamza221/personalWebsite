@@ -5,14 +5,24 @@
         <Contact />
       </template>
     </Modal>
-    <Modal v-if="internet" title="Browser" :minimized="browserMinimized"> </Modal>
+    <Modal v-if="internet" title="Browser" :minimized="browserMinimized">
+      <template #content>
+        <Website />
+      </template>
+    </Modal>
     <Modal v-if="photography" title="Photography" :minimized="photographyMinimized"> </Modal>
-    <Modal v-if="resume" title="Resume" :minimized="resumeMinimized"> </Modal>
+    <Modal v-if="resume" title="Resume" :minimized="resumeMinimized">
+      <template #content>
+        <Resume />
+      </template>
+    </Modal>
   </div>
 </template>
 <script setup>
 import Modal from './Modal.vue'
 import Contact from '../pages/Contact.vue'
+import Website from '../pages/website.vue'
+import Resume from '../pages/Resume.vue'
 import eventBus from '@/eventBus'
 import { computed } from 'vue'
 import { useModalsStore } from '@/stores/modals'
