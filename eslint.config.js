@@ -4,10 +4,10 @@ import prettierPlugin from 'eslint-plugin-prettier'
 import vueParser from 'vue-eslint-parser'
 
 export default [
+  { ignores: ['docs/**', 'dist/**', 'node_modules/**', 'build/**'] },
   eslint.configs.recommended,
   {
     files: ['**/*.js'],
-    ignores: ['dist/**', 'node_modules/**', 'build/**'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -50,7 +50,10 @@ export default [
         document: 'readonly',
         console: 'readonly',
         setTimeout: 'readonly',
+        clearTimeout: 'readonly',
         setInterval: 'readonly',
+        clearInterval: 'readonly',
+        URL: 'readonly',
         process: 'readonly',
       },
       parserOptions: {

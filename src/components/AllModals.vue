@@ -24,7 +24,7 @@ import Contact from '../pages/Contact.vue'
 import Website from '../pages/Website.vue'
 import Resume from '../pages/Resume.vue'
 import eventBus from '@/eventBus'
-import { computed } from 'vue'
+import { computed, onUnmounted } from 'vue'
 import { useModalsStore } from '@/stores/modals'
 
 const modalsStore = useModalsStore()
@@ -37,22 +37,25 @@ const contactsMinimized = computed(() => modalsStore.getisMinimized('contact'))
 const browserMinimized = computed(() => modalsStore.getisMinimized('browser'))
 const photographyMinimized = computed(() => modalsStore.getisMinimized('photography'))
 const resumeMinimized = computed(() => modalsStore.getisMinimized('resume'))
-eventBus.on('minimizeApp', (payload) => {
-  const app = payload.name
-  modalsStore.minimizeModal(app, true)
-})
-eventBus.on('openApp', (payload) => {
-  const app = payload.name
-  modalsStore.minimizeAllExcept(app)
-  modalsStore.openModal(app)
-})
-eventBus.on('closeApp', (payload) => {
-  const app = payload.name
-  modalsStore.closeModal(app)
-})
-eventBus.on('unMinimizeApp', (payload) => {
-  const app = payload.name
-  modalsStore.minimizeModal(app, false)
+
+const onMinimize = (payload) => modalsStore.minimizeModal(payload.name, true)
+const onOpen = (payload) => {
+  modalsStore.minimizeAllExcept(payload.name)
+  modalsStore.openModal(payload.name)
+}
+const onClose = (payload) => modalsStore.closeModal(payload.name)
+const onUnMinimize = (payload) => modalsStore.minimizeModal(payload.name, false)
+
+eventBus.on('minimizeApp', onMinimize)
+eventBus.on('openApp', onOpen)
+eventBus.on('closeApp', onClose)
+eventBus.on('unMinimizeApp', onUnMinimize)
+
+onUnmounted(() => {
+  eventBus.off('minimizeApp', onMinimize)
+  eventBus.off('openApp', onOpen)
+  eventBus.off('closeApp', onClose)
+  eventBus.off('unMinimizeApp', onUnMinimize)
 })
 </script>
 <style lang="scss" scoped>

@@ -27,7 +27,10 @@ export const useModalsStore = defineStore('modals', {
   actions: {
     openModal(name) {
       const modal = this.modals.find((modal) => modal.name === name)
-      if (modal) modal.isOpen = true
+      if (modal) {
+        modal.isOpen = true
+        modal.isMinimized = false
+      }
     },
     closeModal(name) {
       const modal = this.modals.find((modal) => modal.name === name)

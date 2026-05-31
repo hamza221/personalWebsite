@@ -4,13 +4,22 @@
       <input v-model="url" type="text" />
     </nav>
     <div class="content"></div>
-    <iframe class="website-view" :src="url"> </iframe>
+    <iframe class="website-view" :src="safeUrl"> </iframe>
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const url = ref('https://blog.hamzamahjoubi.com/')
+
+const safeUrl = computed(() => {
+  try {
+    const parsed = new URL(url.value)
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:' ? url.value : 'about:blank'
+  } catch {
+    return 'about:blank'
+  }
+})
 </script>
 <style lang="scss" scoped>
 .wrapper {

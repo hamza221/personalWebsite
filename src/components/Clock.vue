@@ -7,26 +7,31 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const currentTime = ref('')
+let timeoutId = null
+let intervalId = null
 
 const updateTime = () => {
   const now = new Date()
   const hours = now.getHours().toString().padStart(2, '0')
   const minutes = now.getMinutes().toString().padStart(2, '0')
   currentTime.value = `${hours}:${minutes}`
-  return 60000 - now.getSeconds() * 1000 + now.getMilliseconds()
+  return 60000 - now.getSeconds() * 1000 - now.getMilliseconds()
 }
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
+
 onMounted(() => {
-  const timeout = updateTime()
-  sleep(timeout).then(() => {
+  const delay = updateTime()
+  timeoutId = setTimeout(() => {
     updateTime()
-    setInterval(updateTime, 60000)
-  })
+    intervalId = setInterval(updateTime, 60000)
+  }, delay)
+})
+
+onUnmounted(() => {
+  clearTimeout(timeoutId)
+  clearInterval(intervalId)
 })
 </script>
 <style lang="scss" scoped>
