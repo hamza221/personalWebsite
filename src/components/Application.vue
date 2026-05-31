@@ -44,6 +44,10 @@ export default {
       type: String,
       required: true,
     },
+    href: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -55,7 +59,11 @@ export default {
     handleClick() {
       this.count += 1
       if (this.count === 2) {
-        eventBus.emit('openApp', { name: this.name })
+        if (this.href) {
+          window.open(this.href, '_blank', 'noopener,noreferrer')
+        } else {
+          eventBus.emit('openApp', { name: this.name })
+        }
         this.count = 0
       }
       window.clearTimeout(this.clickTimer)

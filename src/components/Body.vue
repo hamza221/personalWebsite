@@ -32,6 +32,14 @@
         <p class="app-name">Resume</p>
       </template>
     </Application>
+    <Application :x="410" :y="10" name="trueclock" href="https://www.trueclock.space/">
+      <template #icon>
+        <img src="../assets/trueclock.svg" alt="True Clock" />
+      </template>
+      <template #title>
+        <p class="app-name">True Clock</p>
+      </template>
+    </Application>
     <AllModals></AllModals>
   </div>
 </template>

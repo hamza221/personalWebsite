@@ -41,6 +41,12 @@ const toggleStartMenu = () => {
         </template>
         Photos
       </MenuButton>
+      <MenuButton name="trueclock" href="https://www.trueclock.space/" @click="toggleStartMenu">
+        <template #icon>
+          <img src="./assets/trueclock.svg" alt="True Clock Icon" />
+        </template>
+        True Clock
+      </MenuButton>
     </StartMenu>
   </main>
 </template>

@@ -9,11 +9,16 @@
 <script setup>
 const props = defineProps({
   name: String,
+  href: String,
 })
 import eventBus from '@/eventBus'
 const emit = defineEmits(['click'])
 const handleClick = () => {
-  eventBus.emit('openApp', { name: props.name.toLowerCase() })
+  if (props.href) {
+    window.open(props.href, '_blank', 'noopener,noreferrer')
+  } else {
+    eventBus.emit('openApp', { name: props.name.toLowerCase() })
+  }
   emit('click')
 }
 </script>
