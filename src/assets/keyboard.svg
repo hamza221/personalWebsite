@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- keyboard body -->
+  <rect x="1" y="8" width="30" height="14" fill="#fffde7" stroke="#404040" stroke-width="1"/>
+
+  <!-- top key row -->
+  <rect x="3"  y="10" width="2" height="2" fill="#000"/>
+  <rect x="6"  y="10" width="2" height="2" fill="#000"/>
+  <rect x="9"  y="10" width="2" height="2" fill="#000"/>
+  <rect x="12" y="10" width="2" height="2" fill="#000"/>
+  <rect x="15" y="10" width="2" height="2" fill="#000"/>
+  <rect x="18" y="10" width="2" height="2" fill="#000"/>
+  <rect x="21" y="10" width="2" height="2" fill="#000"/>
+  <rect x="24" y="10" width="2" height="2" fill="#000"/>
+  <rect x="27" y="10" width="2" height="2" fill="#000"/>
+
+  <!-- middle key row -->
+  <rect x="4"  y="13" width="2" height="2" fill="#000"/>
+  <rect x="7"  y="13" width="2" height="2" fill="#000"/>
+  <rect x="10" y="13" width="2" height="2" fill="#000"/>
+  <rect x="13" y="13" width="2" height="2" fill="#000"/>
+  <rect x="16" y="13" width="2" height="2" fill="#000"/>
+  <rect x="19" y="13" width="2" height="2" fill="#000"/>
+  <rect x="22" y="13" width="2" height="2" fill="#000"/>
+  <rect x="25" y="13" width="4" height="2" fill="#808080"/>
+
+  <!-- bottom row with spacebar -->
+  <rect x="3"  y="16" width="4" height="2" fill="#808080"/>
+  <rect x="8"  y="16" width="13" height="2" fill="#000"/>
+  <rect x="22" y="16" width="2" height="2" fill="#000"/>
+  <rect x="25" y="16" width="2" height="2" fill="#000"/>
+  <rect x="28" y="16" width="1" height="2" fill="#000"/>
+
+  <!-- bottom edge shading -->
+  <rect x="2" y="19" width="28" height="2" fill="#808080"/>
+</svg>

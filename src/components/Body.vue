@@ -40,6 +40,14 @@
         <p class="app-name">True Clock</p>
       </template>
     </Application>
+    <Application :x="510" :y="10" name="keyboard" href="https://monkey.hamzamahjoubi.com/">
+      <template #icon>
+        <img src="../assets/keyboard.svg" alt="Keyboard" />
+      </template>
+      <template #title>
+        <p class="app-name">Keyboard</p>
+      </template>
+    </Application>
     <AllModals></AllModals>
   </div>
 </template>

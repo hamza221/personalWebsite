@@ -47,6 +47,12 @@ const toggleStartMenu = () => {
         </template>
         True Clock
       </MenuButton>
+      <MenuButton name="keyboard" href="https://monkey.hamzamahjoubi.com/" @click="toggleStartMenu">
+        <template #icon>
+          <img src="./assets/keyboard.svg" alt="Keyboard Icon" />
+        </template>
+        Keyboard
+      </MenuButton>
     </StartMenu>
   </main>
 </template>

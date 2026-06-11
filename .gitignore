@@ -12,6 +12,7 @@ node_modules
 dist-ssr
 coverage
 *.local
+docs/*
 
 # Environment variables
 .env
