@@ -48,6 +48,14 @@
         <p class="app-name">Keyboard</p>
       </template>
     </Application>
+    <Application :x="610" :y="10" name="cafe" href="https://remote-work.cafe/">
+      <template #icon>
+        <img src="../assets/cafe.svg" alt="Café" />
+      </template>
+      <template #title>
+        <p class="app-name">Café</p>
+      </template>
+    </Application>
     <AllModals></AllModals>
   </div>
 </template>

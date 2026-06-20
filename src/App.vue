@@ -53,6 +53,12 @@ const toggleStartMenu = () => {
         </template>
         Keyboard
       </MenuButton>
+      <MenuButton name="cafe" href="https://remote-work.cafe/" @click="toggleStartMenu">
+        <template #icon>
+          <img src="./assets/cafe.svg" alt="Café Icon" />
+        </template>
+        Café
+      </MenuButton>
     </StartMenu>
   </main>
 </template>
