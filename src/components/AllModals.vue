@@ -112,6 +112,20 @@
         <MiscLinks />
       </template>
     </Modal>
+    <Modal
+      v-if="snake.isOpen"
+      name="snake"
+      title="Snake"
+      :x="180"
+      :y="40"
+      :minimized="snake.isMinimized"
+      :z-index="snake.zIndex"
+      @activate="activate('snake')"
+    >
+      <template #content>
+        <Snake />
+      </template>
+    </Modal>
   </div>
 </template>
 <script setup>
@@ -123,6 +137,7 @@ import Resume from '../pages/Resume.vue'
 import Experiments from '../pages/Experiments.vue'
 import Projects from '../pages/Projects.vue'
 import MiscLinks from '../pages/MiscLinks.vue'
+import Snake from '../pages/Snake.vue'
 import eventBus from '@/eventBus'
 import { computed, onUnmounted } from 'vue'
 import { useModalsStore } from '@/stores/modals'
@@ -137,6 +152,7 @@ const resume = computed(() => modalsStore.getModal('resume'))
 const experiments = computed(() => modalsStore.getModal('experiments'))
 const projects = computed(() => modalsStore.getModal('projects'))
 const miscLinks = computed(() => modalsStore.getModal('misc-links'))
+const snake = computed(() => modalsStore.getModal('snake'))
 
 const onMinimize = (payload) => modalsStore.minimizeModal(payload.name, true)
 const onOpen = (payload) => {

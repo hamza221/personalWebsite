@@ -12,8 +12,10 @@ const props = defineProps({
   href: String,
 })
 import eventBus from '@/eventBus'
+import { playAppClick } from '@/utils/uiSounds'
 const emit = defineEmits(['click'])
 const handleClick = () => {
+  playAppClick()
   if (props.href) {
     window.open(props.href, '_blank', 'noopener,noreferrer')
   } else {

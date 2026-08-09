@@ -3,13 +3,14 @@
     <p class="welcome__eyebrow">HELLO, WORLD.</p>
     <h2 id="welcome-heading">I’m Hamza Mahjoubi.</h2>
     <p class="welcome__copy">
-      A full-stack software engineer in Madrid building open-source and data-driven web products.
+      A full-stack software engineer based in Madrid contributing to open-source and building silly
+      apps.
     </p>
     <div class="welcome__actions">
       <button type="button" @click="openApp('resume')">View résumé</button>
       <button type="button" @click="openApp('contact')">Contact me</button>
     </div>
-    <p class="welcome__hint">Select any desktop icon to explore.</p>
+    <p class="welcome__hint">Double-click any desktop icon to explore.</p>
   </section>
 </template>
 
