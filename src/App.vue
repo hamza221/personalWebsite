@@ -13,51 +13,57 @@ const toggleStartMenu = () => {
 <template>
   <header></header>
 
-  <main class="main">
-    <ToolBar @toggle-start-menu="toggleStartMenu" />
+  <main class="main" @keydown.esc="isStartMenuOpen = false">
+    <ToolBar :start-menu-open="isStartMenuOpen" @toggle-start-menu="toggleStartMenu" />
     <Body></Body>
     <StartMenu v-if="isStartMenuOpen">
+      <MenuButton name="welcome" @click="toggleStartMenu">
+        <template #icon>
+          <img src="./assets/welcome.ico" alt="" />
+        </template>
+        Welcome
+      </MenuButton>
       <MenuButton name="resume" @click="toggleStartMenu">
         <template #icon>
-          <img src="./assets/resume.png" alt="resume Icon" />
+          <img src="./assets/resume.png" alt="" />
         </template>
         About me
       </MenuButton>
       <MenuButton name="contact" @click="toggleStartMenu">
         <template #icon>
-          <img src="./assets/contact.png" alt="resume Icon" />
+          <img src="./assets/contact.png" alt="" />
         </template>
         Contact
       </MenuButton>
-      <MenuButton name="browser" @click="toggleStartMenu">
+      <MenuButton name="blog" @click="toggleStartMenu">
         <template #icon>
-          <img src="./assets/internet.png" alt="resume Icon" />
+          <img src="./assets/internet.png" alt="" />
         </template>
-        Browser
+        Blog
       </MenuButton>
       <MenuButton name="photography" @click="toggleStartMenu">
         <template #icon>
-          <img src="./assets/photgraphy.png" alt="resume Icon" />
+          <img src="./assets/photgraphy.png" alt="" />
         </template>
         Photos
       </MenuButton>
-      <MenuButton name="trueclock" href="https://www.trueclock.space/" @click="toggleStartMenu">
+      <MenuButton name="experiments" @click="toggleStartMenu">
         <template #icon>
-          <img src="./assets/trueclock.svg" alt="True Clock Icon" />
+          <img src="./assets/experiments.ico" alt="" />
         </template>
-        True Clock
+        Experiments
       </MenuButton>
-      <MenuButton name="keyboard" href="https://monkey.hamzamahjoubi.com/" @click="toggleStartMenu">
+      <MenuButton name="projects" @click="toggleStartMenu">
         <template #icon>
-          <img src="./assets/keyboard.svg" alt="Keyboard Icon" />
+          <img src="./assets/experiments.ico" alt="" />
         </template>
-        Keyboard
+        Projects
       </MenuButton>
-      <MenuButton name="cafe" href="https://remote-work.cafe/" @click="toggleStartMenu">
+      <MenuButton name="misc-links" @click="toggleStartMenu">
         <template #icon>
-          <img src="./assets/cafe.svg" alt="Café Icon" />
+          <img src="./assets/misc-links.ico" alt="" />
         </template>
-        Café
+        Misc. Links
       </MenuButton>
     </StartMenu>
   </main>

@@ -1,5 +1,5 @@
 <template>
-  <div class="start-menu">
+  <div id="start-menu" class="start-menu" role="menu" aria-label="Applications">
     <div class="start-menu__header">
       <span class="start-menu__header__text">Menu</span>
     </div>
@@ -15,6 +15,7 @@
   bottom: 2.5rem;
   left: 0;
   width: 12rem;
+  z-index: 10000;
   background-color: var(--tertiary-color);
   border-width: 2px;
   border-color: var(--button-border-color);

@@ -1,5 +1,5 @@
 <template>
-  <button class="button" @click="handleClick">
+  <button class="button" type="button" role="menuitem" @click="handleClick">
     <div class="icon">
       <slot name="icon"></slot>
     </div>
@@ -39,8 +39,11 @@ const handleClick = () => {
   align-items: center;
   display: flex;
 }
-.button:hover {
+.button:hover,
+.button:focus-visible {
   background-color: var(--blue);
   color: white;
+  outline: 1px dotted white;
+  outline-offset: -3px;
 }
 </style>

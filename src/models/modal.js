@@ -1,8 +1,10 @@
 class Modal {
-  constructor(name) {
+  constructor(name, label, isOpen = false) {
     this.name = name
-    this.isOpen = false
+    this.label = label
+    this.isOpen = isOpen
     this.isMinimized = false
+    this.zIndex = 100
   }
 }
 

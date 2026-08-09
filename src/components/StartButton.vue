@@ -1,9 +1,22 @@
 <template>
-  <button class="start-button" @click="$emit('toggle')">
+  <button
+    class="start-button"
+    type="button"
+    aria-controls="start-menu"
+    :aria-expanded="expanded"
+    @click="$emit('toggle')"
+  >
     <span class="start-button__text"> Start </span>
   </button>
 </template>
-<script></script>
+<script setup>
+defineProps({
+  expanded: {
+    type: Boolean,
+    default: false,
+  },
+})
+</script>
 <style lang="scss" scoped>
 .start-button {
   padding: 0 0.5rem;
@@ -21,7 +34,7 @@
     inset -1px -1px 0px #000000,
     inset 1px 1px 0px #ffffff;
   &__text {
-    color: var(--green);
+    color: #075b28;
     font-weight: 700;
     font-family: sans-serif;
   }

@@ -1,5 +1,14 @@
 <template>
-  <button ref="item" @dragstart.prevent class="app" @click="handleClick">
+  <button
+    ref="item"
+    class="app"
+    :data-app-name="name"
+    type="button"
+    :title="movable ? 'Drag to move. Use Shift + arrow keys for precise movement.' : undefined"
+    @dragstart.prevent
+    @click="handleClick"
+    @keydown="handlePositionKeydown"
+  >
     <div class="icon">
       <slot name="icon"></slot>
     </div>
@@ -23,10 +32,16 @@
   padding: 0.25rem;
   font-size: 10px;
   background-color: unset;
+  border: 1px solid transparent;
+  cursor: pointer;
+  touch-action: none;
 }
-.app:focus {
+.app:hover,
+.app:focus-visible {
   background-color: var(--blue);
   color: white;
+  outline: 1px dotted white;
+  outline-offset: -3px;
 }
 .app p {
   color: white;
@@ -50,28 +65,25 @@ export default {
     },
   },
   data() {
-    return {
-      count: 0,
-      clickTimer: null,
-    }
+    return {}
   },
   methods: {
     handleClick() {
-      this.count += 1
-      if (this.count === 2) {
-        if (this.href) {
-          window.open(this.href, '_blank', 'noopener,noreferrer')
-        } else {
-          eventBus.emit('openApp', { name: this.name })
-        }
-        this.count = 0
-      }
-      window.clearTimeout(this.clickTimer)
-      this.clickTimer = setTimeout(() => {
-        if (this.count < 2) {
-          this.count = 0
-        }
-      }, 500)
+      if (this.wasDragged()) return
+      if (this.href) window.open(this.href, '_blank', 'noopener,noreferrer')
+      else eventBus.emit('openApp', { name: this.name })
+    },
+    handlePositionKeydown(event) {
+      if (!this.movable || !event.shiftKey) return
+
+      const step = event.altKey ? 1 : 10
+      if (event.key === 'ArrowRight') this.nudgePosition(step, 0)
+      else if (event.key === 'ArrowLeft') this.nudgePosition(-step, 0)
+      else if (event.key === 'ArrowDown') this.nudgePosition(0, step)
+      else if (event.key === 'ArrowUp') this.nudgePosition(0, -step)
+      else return
+
+      event.preventDefault()
     },
   },
 }

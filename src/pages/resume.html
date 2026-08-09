@@ -5,29 +5,68 @@
   <title>Hamza Mahjoubi – Software Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base target="_blank" />
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: clamp(24px, 6vw, 64px);
+      color: #202020;
+      background: #fffdf7;
+      font: 16px/1.6 Arial, sans-serif;
+    }
+    header { padding-bottom: 24px; border-bottom: 4px solid navy; }
+    h1 { margin: 0; color: navy; font-size: clamp(32px, 7vw, 58px); line-height: 1; }
+    h2 { margin-top: 36px; color: navy; font-size: 20px; border-bottom: 1px solid #b8b8b8; }
+    h3 { margin-bottom: 0; }
+    p { margin: 6px 0; }
+    article { padding: 8px 0 14px; }
+    a { color: #000080; text-underline-offset: 3px; }
+    li + li { margin-top: 4px; }
+    @media (max-width: 520px) {
+      body { padding: 20px; font-size: 15px; }
+      ul { padding-left: 22px; }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <h1>Hamza Mahjoubi</h1>
-    <p><strong>Software Engineer | Web Development</strong></p>
-    <p>📍 Budapest, Hungary</p>
+    <p><strong>Full-Stack Software Engineer</strong></p>
+    <p>📍 Madrid, Spain</p>
   </header>
 
   <section>
     <h2>📞 Contact</h2>
     <ul>
-      <li><strong>Email:</strong> <a href="mailto:hamzamahjoubi221@gmail.com">hamzamahjoubi221@gmail.com</a></li>
-      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hamza--mahjoubi">linkedin.com/in/hamza--mahjoubi</a></li>
-      <li><strong>GitHub:</strong> <a href="https://github.com/hamza221">github.com/hamza221</a></li>
+      <li><strong>Phone:</strong> <a href="tel:+34661448839">+34 661 44 88 39</a></li>
+      <li><strong>Email:</strong> <a href="mailto:contact@hamzamahjoubi.com">contact@hamzamahjoubi.com</a></li>
+      <li><strong>Website:</strong> <a href="https://web.hamzamahjoubi.com/">web.hamzamahjoubi.com</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hamza--mahjoubi/">hamza--mahjoubi</a></li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/hamza221">hamza221</a></li>
     </ul>
   </section>
 
   <section>
     <h2>🧠 Summary</h2>
     <p>
-      Computer science student, software engineer, and aspiring entrepreneur.<br />
-      Always fascinated by how technology influences society and shapes the future.
+      Full-stack software engineer with 4+ years of experience building open-source and
+      data-driven web products. Maintainer of Nextcloud Contacts with experience across Vue.js,
+      TypeScript, PHP, web APIs, AI integrations, performance optimization, releases, and
+      customer-facing issue resolution.
+    </p>
+  </section>
+
+  <section>
+    <h2>🛠 Technical Skills</h2>
+    <p><strong>Languages:</strong> TypeScript, JavaScript, PHP, C#, SQL, Python, HTML, CSS</p>
+    <p><strong>Frontend:</strong> Vue.js, Angular</p>
+    <p><strong>Backend &amp; APIs:</strong> Node.js, .NET, REST APIs, CalDAV, CardDAV, WebDAV</p>
+    <p>
+      <strong>Engineering:</strong> Git, CI/CD, Docker, PHPUnit, GitHub Actions, Linux,
+      Agile/Scrum
     </p>
   </section>
 
@@ -35,64 +74,45 @@
     <h2>💼 Experience</h2>
 
     <article>
-      <h3>Nextcloud GmbH</h3>
-      <p><strong>Software Engineer</strong></p>
-      <p><em>February 2023 – Present (2 years 11 months)</em></p>
+      <h3>Software Engineer — Nextcloud GmbH</h3>
+      <p><em>Remote · February 2023 – Present</em></p>
       <ul>
-        <li>Working on open-source groupware applications</li>
-        <li>Feature development, bug fixing, and maintenance</li>
-        <li>Collaboration with a global open-source community</li>
-      </ul>
-    </article>
-
-    <article>
-      <h3>Instructure</h3>
-      <p><strong>Software Engineer</strong></p>
-      <p><em>March 2022 – January 2023 (11 months)</em></p>
-      <p>📍 Budapest, Hungary</p>
-      <ul>
-        <li>Worked on <strong>Elevate</strong>, a data-driven platform providing insights for educators</li>
-        <li>Helped educators measure, manage, and improve learning outcomes</li>
-      </ul>
-    </article>
-
-    <article>
-      <h3>Freelancer.com</h3>
-      <p><strong>Freelance Web Developer</strong></p>
-      <p><em>January 2020 – March 2022 (2 years 3 months)</em></p>
-      <ul>
-        <li>Built small web solutions (games, websites)</li>
-        <li>Performed web scraping gigs</li>
-        <li>Delivered custom solutions for diverse clients</li>
-      </ul>
-    </article>
-
-    <article>
-      <h3>VisionHM</h3>
-      <p><strong>Summer Intern</strong></p>
-      <p><em>July 2019 – August 2019 (2 months)</em></p>
-      <p>📍 Tunis Governorate, Tunisia</p>
-      <ul>
-        <li>Built a call automation system to remind hospital patients of appointments</li>
-        <li>Implemented phone calls and SMS notifications</li>
-        <li>Technologies used:
-          <ul>
-            <li>Python</li>
-            <li>Asterisk (SIP protocol)</li>
-            <li>SQL databases</li>
-          </ul>
+        <li>
+          Maintain Nextcloud Contacts and contribute across the Groupware suite, including Mail,
+          Calendar, Forms, and Polls, using Vue.js, TypeScript, and PHP across frontend and backend
+          codebases
+        </li>
+        <li>
+          Implemented AI-powered Mail features for email summarization, smart replies, and
+          phishing detection by integrating user-facing workflows with Nextcloud AI services
+        </li>
+        <li>
+          Implemented search result truncation for federated CardDAV synchronization to control
+          payload size and improve handling of large result sets
+        </li>
+        <li>
+          Delivered performance improvements across Groupware applications and contributed AI
+          integrations, frontend/backend tooling, and refactoring to the Nextcloud core server
+        </li>
+        <li>
+          Coordinated release cycles and weekly GitHub triage, converting community and customer
+          reports into fixes across Groupware applications
         </li>
       </ul>
     </article>
 
     <article>
-      <h3>Freeways Association</h3>
-      <p><strong>Member / Tutor</strong></p>
-      <p><em>September 2018 – July 2019 (11 months)</em></p>
-      <p>📍 Ariana Governorate, Tunisia</p>
+      <h3>Student Software Engineer — Instructure Inc</h3>
+      <p><em>Budapest, Hungary · March 2022 – January 2023</em></p>
       <ul>
-        <li>Participated in code jams and workshops</li>
-        <li>Delivered workshops on Python programming</li>
+        <li>
+          Built data visualization features for the Elevate analytics dashboard using Angular and
+          C#/.NET, helping educators measure and improve learning outcomes
+        </li>
+        <li>
+          Delivered dashboard functionality with cross-functional product and engineering teams
+          through an Agile development workflow
+        </li>
       </ul>
     </article>
   </section>
@@ -102,67 +122,18 @@
 
     <article>
       <h3>Eötvös Loránd University</h3>
-      <p><strong>Bachelor’s Degree — Computer Science</strong></p>
-      <p><em>2020 – June 2024</em></p>
+      <p><strong>Bachelor of Science (BSc) in Computer Science</strong></p>
+      <p><em>Budapest, Hungary · September 2020 – June 2024</em></p>
     </article>
-
-    <article>
-      <h3>University of Debrecen</h3>
-      <p><strong>Bachelor’s Degree — Computer Science</strong></p>
-      <p><em>2019 – 2020</em></p>
-    </article>
-
-    <article>
-      <h3>GOMYCODE</h3>
-      <p><strong>Bootcamp</strong></p>
-      <p><em>August 2018</em></p>
-    </article>
-  </section>
-
-  <section>
-    <h2>🛠 Skills</h2>
-
-    <h3>Top Skills</h3>
-    <ul>
-      <li>Git</li>
-      <li>Vue.js</li>
-      <li>RxJS</li>
-    </ul>
-
-    <h3>Other Technical Skills</h3>
-    <ul>
-      <li>Python</li>
-      <li>SQL</li>
-      <li>React</li>
-      <li>CSS</li>
-      <li>PHP</li>
-    </ul>
   </section>
 
   <section>
     <h2>🌍 Languages</h2>
     <ul>
-      <li><strong>English:</strong> Full Professional</li>
-      <li><strong>French:</strong> Native / Bilingual</li>
-      <li><strong>Arabic:</strong> Native / Bilingual</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>📜 Certifications</h2>
-    <ul>
-      <li>MTA: Introduction to Programming Using Python (2018)</li>
-      <li>Building Web Applications in PHP</li>
-      <li>SQL (Intermediate) Certificate</li>
-      <li>React (Basic) Certificate</li>
-      <li>CSS Skills Verification Test</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>🏅 Honors & Awards</h2>
-    <ul>
-      <li>Fully Funded Scholarship</li>
+      <li><strong>Arabic:</strong> Native</li>
+      <li><strong>French:</strong> Fluent</li>
+      <li><strong>English:</strong> Fluent</li>
+      <li><strong>Spanish:</strong> Learning</li>
     </ul>
   </section>
 

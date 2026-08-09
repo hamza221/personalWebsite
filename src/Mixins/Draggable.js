@@ -8,84 +8,141 @@ export default {
       type: Number,
       default: 100,
     },
+    persistPositionKey: {
+      type: String,
+      default: null,
+    },
+    movable: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
       item: null,
       parent: null,
-      oldLeft: 0,
-      oldTop: 0,
-      _mousedownHandler: null,
+      dragHandleSelector: null,
+      _dragMoved: false,
+      _pointerDownHandler: null,
+      _pointerMoveHandler: null,
+      _pointerUpHandler: null,
     }
   },
   mounted() {
     this.item = this.$refs.item
     this.parent = this.$refs.item.parentElement
+    if (!this.movable) return
+    const savedPosition = this.getSavedPosition()
+    this.item.style.left = `${savedPosition?.left ?? this.x}px`
+    this.item.style.top = `${savedPosition?.top ?? this.y}px`
     this.drag()
-    this.item.style.left = `${this.x}px`
-    this.item.style.top = `${this.y}px`
     window.addEventListener('resize', this.handleWindowResize)
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.handleWindowResize)
-    if (this._mousedownHandler && this.item) {
-      this.item.removeEventListener('mousedown', this._mousedownHandler)
+    const handle = this.getDragHandle()
+    if (this._pointerDownHandler && handle) {
+      handle.removeEventListener('pointerdown', this._pointerDownHandler)
     }
+    document.removeEventListener('pointermove', this._pointerMoveHandler)
+    document.removeEventListener('pointerup', this._pointerUpHandler)
   },
   methods: {
-    handleWindowResize() {
-      if (
-        parseInt(this.item.style.left.split('px')[0]) + this.item.clientWidth >
-        this.parent.clientWidth
-      ) {
-        this.item.style.left = `${this.parent.clientWidth - this.item.clientWidth}px`
+    getDragHandle() {
+      return this.dragHandleSelector ? this.item?.querySelector(this.dragHandleSelector) : this.item
+    },
+    isCompactLayout() {
+      return window.matchMedia('(max-width: 720px)').matches
+    },
+    wasDragged() {
+      if (!this._dragMoved) return false
+      this._dragMoved = false
+      return true
+    },
+    getSavedPosition() {
+      if (!this.persistPositionKey) return null
+
+      try {
+        const savedPosition = JSON.parse(window.localStorage.getItem(this.persistPositionKey))
+        if (Number.isFinite(savedPosition?.left) && Number.isFinite(savedPosition?.top)) {
+          return savedPosition
+        }
+      } catch {
+        try {
+          window.localStorage.removeItem(this.persistPositionKey)
+        } catch {
+          // Ignore unavailable storage and use the deterministic default position.
+        }
       }
-      if (parseInt(this.item.style.top.split('px')[0]) > this.parent.clientHeight) {
-        this.item.style.top = `${this.parent.clientHeight - this.item.clientHeight}px`
+
+      return null
+    },
+    savePosition() {
+      if (!this.persistPositionKey || this.isCompactLayout()) return
+
+      try {
+        window.localStorage.setItem(
+          this.persistPositionKey,
+          JSON.stringify({ left: this.item.offsetLeft, top: this.item.offsetTop })
+        )
+      } catch {
+        // The layout remains usable when storage is unavailable or full.
       }
     },
+    setPosition(left, top) {
+      const maxLeft = Math.max(0, this.parent.clientWidth - this.item.clientWidth)
+      const maxTop = Math.max(0, this.parent.clientHeight - this.item.clientHeight)
+
+      this.item.style.left = `${Math.min(Math.max(0, left), maxLeft)}px`
+      this.item.style.top = `${Math.min(Math.max(0, top), maxTop)}px`
+    },
+    nudgePosition(deltaX, deltaY) {
+      if (this.isCompactLayout()) return
+      this.setPosition(this.item.offsetLeft + deltaX, this.item.offsetTop + deltaY)
+      this.savePosition()
+    },
+    handleWindowResize() {
+      if (!this.movable || this.isCompactLayout()) return
+
+      const left = Number.parseFloat(this.item.style.left) || 0
+      const top = Number.parseFloat(this.item.style.top) || 0
+
+      this.setPosition(left, top)
+      this.savePosition()
+    },
     drag() {
-      const self = this
+      if (!this.movable) return
+      const handle = this.getDragHandle()
+      if (!handle) return
 
-      function move(e) {
-        moveLeft(e)
-        moveTop(e)
-      }
+      this._pointerDownHandler = (event) => {
+        if (event.button !== 0 || this.isCompactLayout()) return
 
-      function stop() {
-        document.removeEventListener('mousemove', move)
-        document.removeEventListener('mouseup', stop)
-        self.oldLeft = 0
-        self.oldTop = 0
-      }
+        const startX = event.clientX
+        const startY = event.clientY
+        const startLeft = this.item.offsetLeft
+        const startTop = this.item.offsetTop
+        this._dragMoved = false
 
-      function moveLeft(e) {
-        if (self.item.offsetLeft + self.item.clientWidth > self.parent.clientWidth) {
-          self.item.style.left = `${self.parent.clientWidth - self.item.clientWidth}px`
-        } else if (self.item.offsetLeft < 0) {
-          self.item.style.left = `0px`
-        } else if (self.oldLeft !== 0) {
-          self.item.style.left = `${self.item.offsetLeft + (e.clientX - self.oldLeft)}px`
+        this._pointerMoveHandler = (moveEvent) => {
+          const deltaX = moveEvent.clientX - startX
+          const deltaY = moveEvent.clientY - startY
+          if (Math.abs(deltaX) + Math.abs(deltaY) > 4) this._dragMoved = true
+
+          this.setPosition(startLeft + deltaX, startTop + deltaY)
         }
-        self.oldLeft = e.clientX
-      }
 
-      function moveTop(e) {
-        if (self.item.offsetTop + self.item.clientHeight > self.parent.clientHeight) {
-          self.item.style.top = `${self.parent.clientHeight - self.item.clientHeight}px`
-        } else if (self.item.offsetTop < 0) {
-          self.item.style.top = `0px`
-        } else if (self.oldTop !== 0) {
-          self.item.style.top = `${self.item.offsetTop + (e.clientY - self.oldTop)}px`
+        this._pointerUpHandler = () => {
+          document.removeEventListener('pointermove', this._pointerMoveHandler)
+          document.removeEventListener('pointerup', this._pointerUpHandler)
+          if (this._dragMoved) this.savePosition()
         }
-        self.oldTop = e.clientY
+
+        document.addEventListener('pointermove', this._pointerMoveHandler)
+        document.addEventListener('pointerup', this._pointerUpHandler)
       }
 
-      this._mousedownHandler = () => {
-        document.addEventListener('mousemove', move)
-        document.addEventListener('mouseup', stop)
-      }
-      this.item.addEventListener('mousedown', this._mousedownHandler)
+      handle.addEventListener('pointerdown', this._pointerDownHandler)
     },
   },
 }

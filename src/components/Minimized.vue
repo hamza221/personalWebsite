@@ -1,12 +1,16 @@
 <template>
   <button class="minimized-button" @click="handleOpen">
-    {{ props.name }}
+    {{ props.label }}
   </button>
 </template>
 <script setup>
 import eventBus from '@/eventBus'
 const props = defineProps({
   name: {
+    type: String,
+    required: true,
+  },
+  label: {
     type: String,
     required: true,
   },
@@ -31,6 +35,7 @@ const handleOpen = () => {
   color: #000;
   cursor: pointer;
   width: 140px;
+  flex: 0 0 auto;
   box-shadow: inset 1px 1px grey;
 }
 </style>

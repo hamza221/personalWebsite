@@ -1,6 +1,11 @@
 <template>
   <div class="wrapper">
-    <iframe class="website-view" :srcdoc="resumeHtml"> </iframe>
+    <iframe
+      class="website-view"
+      title="Hamza Mahjoubi résumé"
+      sandbox="allow-popups allow-popups-to-escape-sandbox"
+      :srcdoc="resumeHtml"
+    ></iframe>
   </div>
 </template>
 <script setup>
@@ -14,19 +19,10 @@ import resumeHtml from './resume.html?raw'
   flex-direction: column;
   padding: 5px;
 }
-.navbar {
-  height: 10%;
-  max-height: 100px;
-  border: 2px solid var(--button-border-color);
-  padding: 5px;
-  display: flex;
-  input {
-    height: 100%;
-    width: 100%;
-  }
-}
 .website-view {
   height: 100%;
   width: 100%;
+  border: 1px solid #777;
+  background: white;
 }
 </style>
