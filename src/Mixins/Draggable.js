@@ -123,6 +123,7 @@ export default {
         const startLeft = this.item.offsetLeft
         const startTop = this.item.offsetTop
         this._dragMoved = false
+        if (typeof this.handleDragStart === 'function') this.handleDragStart()
 
         this._pointerMoveHandler = (moveEvent) => {
           const deltaX = moveEvent.clientX - startX
@@ -130,12 +131,16 @@ export default {
           if (Math.abs(deltaX) + Math.abs(deltaY) > 4) this._dragMoved = true
 
           this.setPosition(startLeft + deltaX, startTop + deltaY)
+          if (typeof this.handleDragMove === 'function') {
+            this.handleDragMove(deltaX, deltaY)
+          }
         }
 
         this._pointerUpHandler = () => {
           document.removeEventListener('pointermove', this._pointerMoveHandler)
           document.removeEventListener('pointerup', this._pointerUpHandler)
           if (this._dragMoved) this.savePosition()
+          if (typeof this.handleDragEnd === 'function') this.handleDragEnd(this._dragMoved)
         }
 
         document.addEventListener('pointermove', this._pointerMoveHandler)

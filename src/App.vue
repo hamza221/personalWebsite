@@ -65,6 +65,12 @@ const toggleStartMenu = () => {
         </template>
         Misc. Links
       </MenuButton>
+      <MenuButton name="snake" @click="toggleStartMenu">
+        <template #icon>
+          <span class="start-snake-icon" aria-hidden="true"></span>
+        </template>
+        Snake
+      </MenuButton>
     </StartMenu>
   </main>
 </template>
@@ -77,5 +83,13 @@ const toggleStartMenu = () => {
   overflow: hidden;
   display: flex;
   position: relative;
+}
+.start-snake-icon {
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: repeating-linear-gradient(90deg, #0a5308 0 3px, #57c93b 3px 6px);
+  border: 1px solid #063504;
 }
 </style>
