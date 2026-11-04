@@ -98,6 +98,19 @@
           <p class="app-name">Snake</p>
         </template>
       </Application>
+      <Application
+        :x="112"
+        :y="180"
+        name="guestbook"
+        persist-position-key="portfolio:icon:v1:guestbook"
+      >
+        <template #icon>
+          <img src="../assets/guestbook.ico" alt="" />
+        </template>
+        <template #title>
+          <p class="app-name">Guest book</p>
+        </template>
+      </Application>
       <div
         v-if="selectionRect"
         class="selection-marquee"
