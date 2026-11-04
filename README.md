@@ -2,6 +2,11 @@
 
 My personal website + blog + Photo gallery 
 
+The desktop UI (windows, taskbar, Start menu, controls) is built with
+[`@hamza221/wxp`](https://www.npmjs.com/package/@hamza221/wxp), a Windows XP Luna
+component library licensed GPL-3.0-or-later. `src/App.vue` declares every app as an
+`xp-window`; wxp owns window state, and page content mounts only while a window is open.
+
 ## Guest book
 
 Run `npm ci` and `npm run dev`, then open **Guest book** from the desktop or Start menu.

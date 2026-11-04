@@ -8,9 +8,7 @@
       aria-label="Open Hamza Mahjoubi on GitHub"
       title="GitHub"
     >
-      <span class="quick-access__screen quick-access__screen--github" aria-hidden="true">
-        <img src="../assets/github-mark.png" alt="" />
-      </span>
+      <img class="quick-access__github" src="../assets/github-mark.png" alt="" />
     </a>
     <a
       class="quick-access__button"
@@ -20,9 +18,7 @@
       aria-label="Open Hamza Mahjoubi on LinkedIn"
       title="LinkedIn"
     >
-      <span class="quick-access__screen quick-access__screen--linkedin" aria-hidden="true">
-        <img src="../assets/linkedin-in.png" alt="" />
-      </span>
+      <img class="quick-access__linkedin" src="../assets/linkedin-in.png" alt="" />
     </a>
   </nav>
 </template>
@@ -31,72 +27,40 @@
 .quick-access {
   display: flex;
   align-items: center;
-  gap: 0.125rem;
-  margin-right: 0.25rem;
+  gap: 4px;
 }
 
 .quick-access__button {
-  width: 2rem;
-  height: 2rem;
-  padding: 0.25rem;
   display: grid;
   place-items: center;
-  flex: 0 0 auto;
-  background: var(--tertiary-color);
-  border: 2px solid;
-  border-color: var(--border-white-color) #404040 #404040 var(--border-white-color);
-  color: inherit;
-  text-decoration: none;
-  box-shadow:
-    inset -1px -1px 0 #808080,
-    inset 1px 1px 0 #dfdfdf;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
 }
 
-.quick-access__button:active {
-  padding: 0.3125rem 0.1875rem 0.1875rem 0.3125rem;
-  border-color: #404040 var(--border-white-color) var(--border-white-color) #404040;
-  box-shadow: inset 1px 1px 0 #808080;
+.quick-access__button:hover {
+  background: #ffffff33;
 }
 
 .quick-access__button:focus-visible {
-  outline: 2px dotted #000;
-  outline-offset: -0.375rem;
+  outline: 1px dotted white;
 }
 
-.quick-access__screen {
-  width: 1.25rem;
-  height: 1.25rem;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid #808080;
-}
-
-.quick-access__screen--github {
-  padding: 0.125rem;
-}
-
-.quick-access__screen--linkedin {
-  background: #0a66c2;
-  border-color: #064e96;
-}
-
-.quick-access__screen img {
-  width: 100%;
-  height: 100%;
-  display: block;
+.quick-access__button img {
+  width: 16px;
+  height: 16px;
   object-fit: contain;
 }
 
-@media (max-width: 31.25rem) {
-  .quick-access {
-    gap: 0;
-    margin-right: 0.125rem;
-  }
+.quick-access__github {
+  padding: 1px;
+  border-radius: 50%;
+  background: white;
+}
 
-  .quick-access__button {
-    width: 1.875rem;
-  }
+.quick-access__linkedin {
+  padding: 2px;
+  border-radius: 2px;
+  background: #0a66c2;
 }
 </style>

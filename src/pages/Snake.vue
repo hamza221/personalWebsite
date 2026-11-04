@@ -379,7 +379,7 @@ onBeforeUnmount(() => {
   height: 100%;
   min-height: 0;
   color: #111;
-  background: silver;
+  background: var(--xp-face, #ece9d8);
   user-select: none;
 }
 
@@ -397,11 +397,11 @@ onBeforeUnmount(() => {
   flex: 0 0 auto;
   min-height: 1.75rem;
   padding: 0 0.35rem;
-  border-bottom: 1px solid #808080;
-  box-shadow: 0 1px #fff;
+  border-bottom: 1px solid #d5d1c2;
+  background: var(--xp-face, #ece9d8);
 }
 
-.snake-game__menu button {
+.snake-game .snake-game__menu button {
   min-width: 0;
   min-height: 0;
   padding: 0.3rem 0.5rem;
@@ -409,10 +409,10 @@ onBeforeUnmount(() => {
   border: 1px solid transparent;
 }
 
-.snake-game__menu button:hover,
-.snake-game__menu button:focus-visible {
+.snake-game .snake-game__menu button:hover,
+.snake-game .snake-game__menu button:focus-visible {
   color: #fff;
-  background: navy;
+  background: var(--xp-selection, #316ac5);
   outline: none;
 }
 
@@ -433,13 +433,13 @@ onBeforeUnmount(() => {
   padding: 0.35rem 0.5rem;
   font-family: 'Courier New', monospace;
   font-size: clamp(0.65rem, 2vw, 0.85rem);
-  background: #b8b8b8;
-  border: 2px solid;
-  border-color: #808080 #fff #fff #808080;
+  background: white;
+  border: 1px solid;
+  border-color: #aca899 #fff #fff #aca899;
 }
 
 .snake-game__scorebar strong {
-  color: navy;
+  color: var(--blue);
   font: inherit;
   font-weight: 700;
 }
@@ -547,16 +547,25 @@ onBeforeUnmount(() => {
   min-width: 2.35rem;
   min-height: 2.1rem;
   padding: 0.35rem 0.65rem;
-  color: #111;
-  background: silver;
-  border: 2px solid;
-  border-color: #fff #404040 #404040 #fff;
+  color: #000;
+  background: linear-gradient(#fff 0%, #ecebe5 86%, #d8d0c4 100%);
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  font: inherit;
   cursor: pointer;
 }
 
+.snake-game button:hover {
+  box-shadow:
+    inset -1px 1px #fff0cf,
+    inset 1px 2px #fdd889,
+    inset -2px 2px #fbc761,
+    inset 2px -2px #e5a01a;
+}
+
 .snake-game button:active {
-  border-color: #404040 #fff #fff #404040;
-  transform: translate(1px, 1px);
+  background: linear-gradient(#cdcac3, #e3e3db 8%, #e5e5de 94%, #f2f2f1);
+  box-shadow: inset 1px 1px 2px #aaa79e;
 }
 
 .snake-game__status {

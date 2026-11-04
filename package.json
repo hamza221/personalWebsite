@@ -11,8 +11,7 @@
     "lint:fix": "eslint --ext .js,.vue . --fix"
   },
   "dependencies": {
-    "mitt": "^3.0.1",
-    "pinia": "^4.1.0",
+    "@hamza221/wxp": "^0.1.0",
     "vue": "^3.5.44"
   },
   "devDependencies": {

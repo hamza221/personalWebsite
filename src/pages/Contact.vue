@@ -3,26 +3,28 @@
     <p class="eyebrow">NEW MESSAGE</p>
     <h2>Let’s talk.</h2>
     <p class="intro">Fill this out and I’ll open your email app with the message ready to send.</p>
-    <div class="form-group">
+    <div class="xp-field">
       <label for="name">Name:</label>
-      <input type="text" v-model="name" id="name" name="name" required />
+      <input id="name" v-model="name" class="xp-input" type="text" name="name" required />
     </div>
-    <div class="form-group">
+    <div class="xp-field">
       <label for="subject">Subject:</label>
-      <input type="text" v-model="subject" id="subject" name="subject" required />
+      <input id="subject" v-model="subject" class="xp-input" type="text" name="subject" required />
     </div>
-    <div class="form-group">
+    <div class="xp-field">
       <label for="email">Email:</label>
-      <input type="email" v-model="email" id="email" name="email" required />
+      <input id="email" v-model="email" class="xp-input" type="email" name="email" required />
     </div>
-    <div class="form-group">
+    <div class="xp-field">
       <label for="message">Message:</label>
-      <textarea id="message" v-model="message" name="message" required></textarea>
+      <textarea id="message" v-model="message" class="xp-input" name="message" required></textarea>
     </div>
-    <button type="submit">Continue in email app</button>
+    <div class="actions">
+      <button class="xp-button xp-default" type="submit">Continue in email app</button>
+    </div>
     <p class="direct-contact">
       Prefer a direct link?
-      <a href="mailto:contact@hamzamahjoubi.com">contact@hamzamahjoubi.com</a>
+      <a class="xp-link" href="mailto:contact@hamzamahjoubi.com">contact@hamzamahjoubi.com</a>
     </p>
   </form>
 </template>
@@ -46,65 +48,44 @@ const openEmailApp = () => {
   window.location.href = mailtoHref.value
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 .content {
   min-height: 100%;
-  background-color: #f7f3e8;
-  padding: clamp(1rem, 4vw, 2rem);
-  width: 100%;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  * {
-    font-family: Arial, sans-serif;
-  }
+  gap: 8px;
 }
 .eyebrow {
   color: var(--blue);
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: bold;
   letter-spacing: 0.1em;
 }
 h2 {
-  margin: 0.35rem 0;
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  color: #1e3a8a;
+  font:
+    bold 22px 'Trebuchet MS',
+    Tahoma,
+    sans-serif;
 }
 .intro {
-  margin-bottom: 1rem;
+  margin-bottom: 4px;
   line-height: 1.5;
 }
-.form-group {
-  display: grid;
-  gap: 0.25rem;
+.xp-field {
+  align-items: stretch;
 }
-input,
-textarea {
-  width: 100%;
-  padding: 5px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-}
-textarea {
+textarea.xp-input {
   min-height: 7rem;
   resize: vertical;
 }
-input:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid #ffdf00;
-  border-color: var(--blue);
-}
-button {
-  background-color: var(--blue);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
 }
 .direct-contact {
-  margin-top: 1rem;
-  font-size: 0.85rem;
-}
-.direct-contact a {
-  color: var(--blue);
   user-select: text;
 }
 </style>

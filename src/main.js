@@ -1,11 +1,8 @@
+import '@hamza221/wxp'
+import '@hamza221/wxp/styles.css'
 import './assets/main.css'
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import App from './App.vue'
 
-const app = createApp(App)
-const pinia = createPinia()
-
-app.use(pinia)
-app.mount('#app')
+createApp(App).mount('#app')

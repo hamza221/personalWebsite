@@ -7,85 +7,49 @@
     </div>
 
     <nav class="projects__apps" aria-label="Projects">
-      <Application :movable="false" name="fennec" href="https://getfennec.app/">
-        <template #icon>
-          <img src="../assets/fennec-logo.png" alt="" />
-        </template>
-        <template #title>
-          <p>Fennec</p>
-        </template>
-      </Application>
+      <LinkTile href="https://getfennec.app/" :icon="fennecIcon" label="Fennec" />
     </nav>
   </section>
 </template>
 
 <script setup>
-import Application from '@/components/Application.vue'
+import LinkTile from '@/components/LinkTile.vue'
+import fennecIcon from '@/assets/fennec-logo.png'
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .projects {
   min-height: 100%;
-  padding: clamp(1rem, 4vw, 2rem);
-  color: #111;
-  background: #f7f3e8;
+  padding: 16px;
+  background: white;
 }
 
 .projects__intro {
-  margin-bottom: 1.5rem;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d5d1c2;
 }
 
 .projects__eyebrow {
   color: var(--blue);
-  font-size: 0.72rem;
+  font-size: 11px;
+  font-weight: bold;
   letter-spacing: 0.1em;
 }
 
 h2 {
-  margin: 0.35rem 0;
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
-}
-
-.projects__intro > p:last-child {
-  font-family: Arial, sans-serif;
-  line-height: 1.5;
+  margin: 4px 0;
+  color: #1e3a8a;
+  font:
+    bold 22px 'Trebuchet MS',
+    Tahoma,
+    sans-serif;
 }
 
 .projects__apps {
+  --tile-icon: 48px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(5.5rem, 1fr));
-  gap: 1rem;
-}
-
-.projects__apps :deep(.app) {
-  position: static;
-  width: 100%;
-  align-items: center;
-  color: #111;
-}
-
-.projects__apps :deep(.icon) {
-  height: 48px;
-}
-
-.projects__apps :deep(.icon img) {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-}
-
-.projects__apps :deep(.app p) {
-  color: #111;
-}
-
-.projects__apps :deep(.app:hover p),
-.projects__apps :deep(.app:focus-visible p) {
-  color: white;
-}
-
-@media (max-width: 430px) {
-  .projects__apps {
-    grid-template-columns: repeat(2, minmax(5.5rem, 1fr));
-  }
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 12px;
 }
 </style>

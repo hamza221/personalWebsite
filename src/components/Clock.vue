@@ -1,9 +1,5 @@
 <template>
-  <div class="clock">
-    <span class="clock__text">
-      {{ currentTime }}
-    </span>
-  </div>
+  <time class="clock">{{ currentTime }}</time>
 </template>
 
 <script setup>
@@ -34,24 +30,14 @@ onUnmounted(() => {
   clearInterval(intervalId)
 })
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
 .clock {
-  padding: 0 0.5rem;
-  gap: 0.25rem;
-  border: 2px solid var(--button-border-color);
-  background-color: var(--tertiary-color);
-  height: 2rem;
-  font-size: 100%;
-  display: flex;
+  color: white;
+  font:
+    11px Tahoma,
+    Arial,
+    sans-serif;
   cursor: default;
-  align-items: center;
-  box-shadow:
-    0 0 #0000,
-    0 0 #0000,
-    inset -1px -1px 0px #000000,
-    inset 1px 1px 0px #ffffff;
-  &__text {
-    font-family: sans-serif;
-  }
 }
 </style>

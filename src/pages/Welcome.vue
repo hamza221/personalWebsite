@@ -7,63 +7,53 @@
       apps.
     </p>
     <div class="welcome__actions">
-      <button type="button" @click="openApp('resume')">View résumé</button>
-      <button type="button" @click="openApp('contact')">Contact me</button>
+      <button class="xp-button xp-default" type="button" @click="openApp('resume')">
+        View résumé
+      </button>
+      <button class="xp-button" type="button" @click="openApp('contact')">Contact me</button>
     </div>
-    <p class="welcome__hint">Double-click any desktop icon to explore.</p>
+    <p class="welcome__hint">Click any desktop icon to explore.</p>
   </section>
 </template>
 
 <script setup>
-import eventBus from '@/eventBus'
-
-const openApp = (name) => eventBus.emit('openApp', { name })
+import { openApp } from '@/desktop'
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .welcome {
   min-height: 100%;
-  padding: clamp(1.25rem, 5vw, 2.5rem);
+  padding: 24px;
   display: grid;
   align-content: center;
-  color: #111;
-  background: silver;
+  background: linear-gradient(#fff, #ece9d8);
 }
 
 .welcome__eyebrow,
 .welcome__hint {
-  font-size: 0.72rem;
+  color: #555;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
 h2 {
-  margin: 0.5rem 0 0.75rem;
-  font-size: clamp(1.75rem, 5vw, 3rem);
-  line-height: 1.05;
+  margin: 6px 0 10px;
+  color: #1e3a8a;
+  font:
+    bold clamp(22px, 5vw, 32px) / 1.1 'Trebuchet MS',
+    Tahoma,
+    sans-serif;
 }
 
 .welcome__copy {
   max-width: 44ch;
-  font-family: Arial, sans-serif;
   line-height: 1.55;
 }
 
 .welcome__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 1.25rem 0;
-}
-
-button {
-  padding: 0.65rem 0.9rem;
-  background: #e2e2e2;
-  border: 2px solid;
-  border-color: white #404040 #404040 white;
-  cursor: pointer;
-}
-
-button:active {
-  border-color: #404040 white white #404040;
+  gap: 8px;
+  margin: 16px 0;
 }
 </style>

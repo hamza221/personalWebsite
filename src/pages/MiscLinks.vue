@@ -26,9 +26,9 @@
       </ol>
     </div>
 
-    <div class="text-editor__status" aria-label="Document status">
-      <span>{{ links.length }} link<span v-if="links.length !== 1">s</span></span>
-      <span>READ ONLY</span>
+    <div class="xp-status-bar" aria-label="Document status">
+      <p class="xp-status-field">{{ links.length }} link<span v-if="links.length !== 1">s</span></p>
+      <p class="xp-status-field">READ ONLY</p>
     </div>
   </section>
 </template>
@@ -44,20 +44,18 @@ const links = [
 
 <style scoped>
 .text-editor {
-  min-height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0.25rem;
-  background: var(--tertiary-color);
+  background: var(--xp-face, #ece9d8);
   color: #000;
-  font-family: Arial, sans-serif;
 }
 
 .text-editor__menu {
   display: flex;
   gap: 1.25rem;
-  padding: 0.25rem 0.5rem 0.4rem;
-  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-bottom: 1px solid #d5d1c2;
   cursor: default;
 }
 
@@ -67,10 +65,9 @@ const links = [
   padding: 1rem;
   overflow: auto;
   background: #fff;
-  border: 2px solid;
-  border-color: #404040 #fff #fff #404040;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9rem;
+  border-bottom: 1px solid #aca899;
+  font-family: 'Lucida Console', 'Courier New', monospace;
+  font-size: 13px;
   line-height: 1.55;
   cursor: text;
   user-select: text;
@@ -111,14 +108,7 @@ const links = [
   color: #551a8b;
 }
 
-.text-editor__status {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 0.25rem;
-  padding: 0.2rem 0.4rem;
-  border: 1px solid;
-  border-color: #808080 #fff #fff #808080;
-  font-size: 0.68rem;
+.xp-status-bar {
+  flex: 0 0 auto;
 }
 </style>

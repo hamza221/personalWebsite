@@ -151,7 +151,13 @@ onUnmounted(() => controller.abort())
           </article>
         </li>
       </ol>
-      <button v-if="error || hasMore" type="button" :disabled="loading" @click="loadMore">
+      <button
+        v-if="error || hasMore"
+        class="xp-button"
+        type="button"
+        :disabled="loading"
+        @click="loadMore"
+      >
         {{ error ? 'Try again' : 'Check older PRs' }}
       </button>
       <p class="source-note">
@@ -165,12 +171,9 @@ onUnmounted(() => controller.abort())
 <style scoped>
 .guest-book {
   min-height: 100%;
-  padding: clamp(1rem, 4vw, 2rem);
-  background: #f7f3e8;
+  padding: 16px;
+  background: white;
   color: #222;
-}
-.guest-book * {
-  font-family: Arial, sans-serif;
 }
 .book-heading,
 .author {
@@ -195,8 +198,12 @@ onUnmounted(() => controller.abort())
   letter-spacing: 0.1em;
 }
 h2 {
-  margin: 0.25rem 0;
-  font-size: 2rem;
+  margin: 2px 0;
+  color: #1e3a8a;
+  font:
+    bold 22px 'Trebuchet MS',
+    Tahoma,
+    sans-serif;
 }
 a {
   color: var(--blue);
@@ -207,17 +214,18 @@ a {
   line-height: 1.5;
 }
 .guide {
-  border: 1px solid #b6ad98;
-  background: #fffdf5;
+  border: 1px solid #d0d0bf;
+  border-radius: 4px;
+  background: #fdfcf7;
 }
 summary {
-  padding: 0.8rem;
+  padding: 8px 10px;
   cursor: pointer;
   font-weight: 700;
-  color: var(--blue);
+  color: #0046d5;
 }
 summary:focus-visible {
-  outline: 3px solid #ffdf00;
+  outline: 1px dotted #000;
 }
 .steps {
   padding: 0 1rem 0 2.25rem;
@@ -234,8 +242,8 @@ summary:focus-visible {
 pre {
   margin-top: 0.6rem;
   padding: 0.75rem;
-  background: #eae7dc;
-  border: 1px inset #bbb;
+  background: white;
+  border: 1px solid var(--xp-border, #7f9db9);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -311,16 +319,7 @@ h3 {
   line-height: 1.6;
   user-select: text;
 }
-button {
+.xp-button {
   margin-top: 1rem;
-  padding: 0.65rem 1rem;
-  background: var(--blue);
-  color: white;
-  cursor: pointer;
-  border: 2px outset #aaa;
-}
-button:disabled {
-  opacity: 0.6;
-  cursor: wait;
 }
 </style>

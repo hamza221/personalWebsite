@@ -9,7 +9,16 @@ export default defineConfig({
   build: {
     outDir: 'docs',
   },
-  plugins: [vue()],
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // wxp registers light-DOM custom elements (xp-window, xp-desktop, …).
+          isCustomElement: (tag) => tag.startsWith('xp-'),
+        },
+      },
+    }),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
