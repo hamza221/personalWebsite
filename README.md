@@ -19,9 +19,10 @@ The website reads published messages directly from GitHub; no database is requir
 ### Empty PR auto-merge
 
 `.github/workflows/auto-merge-empty.yml` runs on PR creation, updates, reopening,
-leaving draft mode, and edits. It fetches the current PR and file list from GitHub,
-skips drafts/closed PRs and any PR with file changes, and merges eligible PRs with
-a merge commit to preserve their original commit messages.
+leaving draft mode, edits, and successful PR Build/Lint completion. It fetches the
+current PR and file list from GitHub, skips drafts/closed PRs and any PR with file
+changes, and merges eligible PRs with a merge commit to preserve original messages.
+CI completion only considers PRs with the same source repository and head SHA.
 
 “Empty” means zero net changed files in the PR, not an empty description or title.
 The workflow checks the current revision again before merging and supplies the
@@ -31,11 +32,14 @@ The existing dependency auto-merge workflow is independent and unchanged.
 
 Repository setup:
 
-- Land the workflow on the default branch so `pull_request_target` can run it.
+- Land the workflow on the default branch so its privileged events can run.
 - Allow merge commits and GitHub Actions write permissions in repository settings.
-- Branch protections and required checks still apply. This workflow attempts an
-  immediate merge; it does not queue GitHub's deferred auto-merge. If rules block
-  it, satisfy them and rerun the workflow. It cannot bypass required approvals.
+- Branch protections and required checks still apply. If required checks are pending,
+  the workflow waits for Build/Lint completion events and revalidates before merging.
+  Failed checks do not trigger a merge; rerunning fixed CI successfully triggers a
+  fresh attempt. Other policy errors remain failures and require intervention.
+  It cannot bypass required approvals. Keep the `workflow_run.workflows` names in
+  sync with the CI workflow names if they change.
 - A merge made with `GITHUB_TOKEN` does not normally trigger another push workflow.
   The UI fetches GitHub directly, so displaying new entries needs no site rebuild.
 
