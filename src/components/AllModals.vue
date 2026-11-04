@@ -126,6 +126,20 @@
         <Snake />
       </template>
     </Modal>
+    <Modal
+      v-if="guestbook.isOpen"
+      name="guestbook"
+      title="Guest book"
+      :x="240"
+      :y="80"
+      :minimized="guestbook.isMinimized"
+      :z-index="guestbook.zIndex"
+      @activate="activate('guestbook')"
+    >
+      <template #content>
+        <GuestBook />
+      </template>
+    </Modal>
   </div>
 </template>
 <script setup>
@@ -138,6 +152,7 @@ import Experiments from '../pages/Experiments.vue'
 import Projects from '../pages/Projects.vue'
 import MiscLinks from '../pages/MiscLinks.vue'
 import Snake from '../pages/Snake.vue'
+import GuestBook from '../pages/GuestBook.vue'
 import eventBus from '@/eventBus'
 import { computed, onUnmounted } from 'vue'
 import { useModalsStore } from '@/stores/modals'
@@ -153,6 +168,7 @@ const experiments = computed(() => modalsStore.getModal('experiments'))
 const projects = computed(() => modalsStore.getModal('projects'))
 const miscLinks = computed(() => modalsStore.getModal('misc-links'))
 const snake = computed(() => modalsStore.getModal('snake'))
+const guestbook = computed(() => modalsStore.getModal('guestbook'))
 
 const onMinimize = (payload) => modalsStore.minimizeModal(payload.name, true)
 const onOpen = (payload) => {

@@ -13,6 +13,7 @@ export const useModalsStore = defineStore('modals', {
       new Modal('projects', 'Projects'),
       new Modal('misc-links', 'Misc. Links'),
       new Modal('snake', 'Snake'),
+      new Modal('guestbook', 'Guest book'),
     ],
     topZIndex: 100,
   }),

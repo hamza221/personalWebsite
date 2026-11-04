@@ -65,6 +65,12 @@ const toggleStartMenu = () => {
         </template>
         Misc. Links
       </MenuButton>
+      <MenuButton name="guestbook" @click="toggleStartMenu">
+        <template #icon>
+          <img src="./assets/guestbook.ico" alt="" />
+        </template>
+        Guest book
+      </MenuButton>
       <MenuButton name="snake" @click="toggleStartMenu">
         <template #icon>
           <span class="start-snake-icon" aria-hidden="true"></span>

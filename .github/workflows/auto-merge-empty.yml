@@ -1,0 +1,64 @@
+name: Auto-merge empty PRs
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: auto-merge-empty-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  auto-merge-empty:
+    runs-on: ubuntu-latest
+    steps:
+      # Never check out the PR: this event has a write token, including for forks.
+      - name: Merge only a verified empty PR
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const params = { ...context.repo, pull_number: context.payload.pull_request.number };
+            const { data: pr } = await github.rest.pulls.get(params);
+            if (pr.state !== 'open' || pr.draft || pr.merged) {
+              core.info('Skipping closed, merged, or draft PR.');
+              return;
+            }
+            if (pr.changed_files !== 0) {
+              core.info('Skipping PR with file changes.');
+              return;
+            }
+
+            // A single returned file is enough to disqualify the PR.
+            const { data: files } = await github.rest.pulls.listFiles({ ...params, per_page: 1 });
+            if (files.length !== 0) {
+              core.info('Skipping PR with file changes.');
+              return;
+            }
+
+            // Recheck after reading the diff; never merge a different revision.
+            const { data: current } = await github.rest.pulls.get(params);
+            if (
+              current.state !== 'open' || current.draft || current.merged ||
+              current.changed_files !== 0 || current.head.sha !== pr.head.sha ||
+              current.base.sha !== pr.base.sha || current.base.ref !== pr.base.ref
+            ) {
+              core.info('Skipping PR that changed during validation.');
+              return;
+            }
+
+            // Merge immediately with a SHA guard, rather than queueing an approval
+            // that could outlive the verified empty revision. Branch rules still apply.
+            const { data: result } = await github.rest.pulls.merge({
+              ...params,
+              sha: pr.head.sha,
+              merge_method: 'merge',
+            });
+            if (!result.merged) {
+              core.setFailed(`GitHub did not merge the empty PR: ${result.message}`);
+              return;
+            }
+            core.info(`Merged empty PR #${params.pull_number}: ${result.sha}`);
