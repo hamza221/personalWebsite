@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import LinkTile from '@/components/LinkTile.vue'
+import LinkTile from '@/xp/components/LinkTile.vue'
 import trueclockIcon from '@/assets/trueclock.svg'
 import keyboardIcon from '@/assets/keyboard.svg'
 import cafeIcon from '@/assets/cafe.svg'

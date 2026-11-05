@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { openApp } from '@/desktop'
+import { openApp } from '@/xp/desktop'
 </script>
 
 <style scoped>

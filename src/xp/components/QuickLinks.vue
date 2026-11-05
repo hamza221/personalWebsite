@@ -8,7 +8,7 @@
       aria-label="Open Hamza Mahjoubi on GitHub"
       title="GitHub"
     >
-      <img class="quick-access__github" src="../assets/github-mark.png" alt="" />
+      <img class="quick-access__github" src="@/assets/github-mark.png" alt="" />
     </a>
     <a
       class="quick-access__button"
@@ -18,7 +18,7 @@
       aria-label="Open Hamza Mahjoubi on LinkedIn"
       title="LinkedIn"
     >
-      <img class="quick-access__linkedin" src="../assets/linkedin-in.png" alt="" />
+      <img class="quick-access__linkedin" src="@/assets/linkedin-in.png" alt="" />
     </a>
   </nav>
 </template>

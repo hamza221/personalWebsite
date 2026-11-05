@@ -1,0 +1,42 @@
+/* Former global styles of the classic desktop, scoped to its root.
+   :where() keeps the original zero/element specificity so component styles still win. */
+.classic {
+  --tertiary-color: silver;
+  --border-white-color: rgb(255 255 255);
+  --background-main: rgb(0 128 128);
+  --button-border-color: rgb(156 163 175);
+  --border-gray: rgb(107 114 128);
+  --green: rgb(22 163 74);
+  --blue: navy;
+  height: 100%;
+}
+
+@font-face {
+  font-family: 'px_sans_nouveaux';
+  src: url('../assets/px_sans_nouveaux.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:where(.classic),
+:where(.classic) * {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  font-family: 'px_sans_nouveaux';
+}
+
+:where(.classic) button {
+  color: inherit;
+}
+
+:where(.classic) button:focus-visible,
+:where(.classic) a:focus-visible {
+  outline: 3px solid #ffdf00;
+  outline-offset: 2px;
+}
+
+:where(.classic) img {
+  height: 100%;
+}

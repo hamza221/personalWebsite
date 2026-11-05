@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import LinkTile from '@/components/LinkTile.vue'
+import LinkTile from '@/xp/components/LinkTile.vue'
 import fennecIcon from '@/assets/fennec-logo.png'
 </script>
 
