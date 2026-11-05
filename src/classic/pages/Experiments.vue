@@ -9,7 +9,7 @@
     <nav class="experiments__apps" aria-label="Experiment projects">
       <Application :movable="false" name="trueclock" href="https://www.trueclock.space/">
         <template #icon>
-          <img src="../assets/trueclock.svg" alt="" />
+          <img src="@/assets/trueclock.svg" alt="" />
         </template>
         <template #title>
           <p>True Clock</p>
@@ -18,7 +18,7 @@
 
       <Application :movable="false" name="keyboard" href="https://monkey.hamzamahjoubi.com/">
         <template #icon>
-          <img src="../assets/keyboard.svg" alt="" />
+          <img src="@/assets/keyboard.svg" alt="" />
         </template>
         <template #title>
           <p>Keyboard</p>
@@ -27,7 +27,7 @@
 
       <Application :movable="false" name="cafe" href="https://remote-work.cafe/">
         <template #icon>
-          <img src="../assets/cafe.svg" alt="" />
+          <img src="@/assets/cafe.svg" alt="" />
         </template>
         <template #title>
           <p>Café</p>
@@ -36,7 +36,7 @@
 
       <Application :movable="false" name="bentobox" href="https://www.bentobox.tools/">
         <template #icon>
-          <img src="../assets/bentobox.svg" alt="" />
+          <img src="@/assets/bentobox.svg" alt="" />
         </template>
         <template #title>
           <p>BentoBox</p>
@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import Application from '@/components/Application.vue'
+import Application from '@/classic/components/Application.vue'
 </script>
 
 <style lang="scss" scoped>

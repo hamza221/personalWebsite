@@ -57,8 +57,8 @@
 }
 </style>
 <script>
-import Draggable from '@/Mixins/Draggable'
-import eventBus from '@/eventBus'
+import Draggable from '@/classic/Mixins/Draggable'
+import eventBus from '@/classic/eventBus'
 import { playAppClick } from '@/utils/uiSounds'
 
 export default {

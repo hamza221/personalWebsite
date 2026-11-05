@@ -11,7 +11,7 @@ const props = defineProps({
   name: String,
   href: String,
 })
-import eventBus from '@/eventBus'
+import eventBus from '@/classic/eventBus'
 import { playAppClick } from '@/utils/uiSounds'
 const emit = defineEmits(['click'])
 const handleClick = () => {

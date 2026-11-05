@@ -9,7 +9,7 @@
       title="GitHub"
     >
       <span class="quick-access__screen quick-access__screen--github" aria-hidden="true">
-        <img src="../assets/github-mark.png" alt="" />
+        <img src="@/assets/github-mark.png" alt="" />
       </span>
     </a>
     <a
@@ -21,7 +21,7 @@
       title="LinkedIn"
     >
       <span class="quick-access__screen quick-access__screen--linkedin" aria-hidden="true">
-        <img src="../assets/linkedin-in.png" alt="" />
+        <img src="@/assets/linkedin-in.png" alt="" />
       </span>
     </a>
   </nav>

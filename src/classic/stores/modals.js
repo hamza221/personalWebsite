@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import Modal from '@/models/modal.js'
+import Modal from '@/classic/models/modal.js'
 
 export const useModalsStore = defineStore('modals', {
   state: () => ({
@@ -14,6 +14,7 @@ export const useModalsStore = defineStore('modals', {
       new Modal('misc-links', 'Misc. Links'),
       new Modal('snake', 'Snake'),
       new Modal('guestbook', 'Guest book'),
+      new Modal('settings', 'Settings'),
     ],
     topZIndex: 100,
   }),

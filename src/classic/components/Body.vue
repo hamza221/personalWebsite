@@ -8,7 +8,7 @@
     >
       <Application :x="12" :y="12" name="welcome" persist-position-key="portfolio:icon:v1:welcome">
         <template #icon>
-          <img src="../assets/welcome.ico" alt="" />
+          <img src="@/assets/welcome.ico" alt="" />
         </template>
         <template #title>
           <p class="app-name">Welcome</p>
@@ -16,7 +16,7 @@
       </Application>
       <Application :x="112" :y="12" name="contact" persist-position-key="portfolio:icon:v1:contact">
         <template #icon>
-          <img src="../assets/contact.png" alt="" />
+          <img src="@/assets/contact.png" alt="" />
         </template>
         <template #title>
           <p class="app-name">Contact</p>
@@ -24,7 +24,7 @@
       </Application>
       <Application :x="212" :y="12" name="blog" persist-position-key="portfolio:icon:v1:blog">
         <template #icon>
-          <img src="../assets/internet.png" alt="" />
+          <img src="@/assets/internet.png" alt="" />
         </template>
         <template #title>
           <p class="app-name">Blog</p>
@@ -37,7 +37,7 @@
         persist-position-key="portfolio:icon:v1:photography"
       >
         <template #icon>
-          <img src="../assets/photgraphy.png" alt="" />
+          <img src="@/assets/photgraphy.png" alt="" />
         </template>
         <template #title>
           <p class="app-name">Photography</p>
@@ -45,7 +45,7 @@
       </Application>
       <Application :x="12" :y="96" name="resume" persist-position-key="portfolio:icon:v1:resume">
         <template #icon>
-          <img src="../assets/resume.png" alt="" />
+          <img src="@/assets/resume.png" alt="" />
         </template>
         <template #title>
           <p class="app-name">Resume</p>
@@ -58,7 +58,7 @@
         persist-position-key="portfolio:icon:v1:experiments"
       >
         <template #icon>
-          <img src="../assets/experiments.ico" alt="" />
+          <img src="@/assets/experiments.ico" alt="" />
         </template>
         <template #title>
           <p class="app-name">Experiments</p>
@@ -71,7 +71,7 @@
         persist-position-key="portfolio:icon:v1:projects"
       >
         <template #icon>
-          <img src="../assets/experiments.ico" alt="" />
+          <img src="@/assets/experiments.ico" alt="" />
         </template>
         <template #title>
           <p class="app-name">Projects</p>
@@ -84,7 +84,7 @@
         persist-position-key="portfolio:icon:v1:misc-links"
       >
         <template #icon>
-          <img src="../assets/misc-links.ico" alt="" />
+          <img src="@/assets/misc-links.ico" alt="" />
         </template>
         <template #title>
           <p class="app-name">Misc. Links</p>
@@ -105,10 +105,23 @@
         persist-position-key="portfolio:icon:v1:guestbook"
       >
         <template #icon>
-          <img src="../assets/guestbook.ico" alt="" />
+          <img src="@/assets/guestbook.ico" alt="" />
         </template>
         <template #title>
           <p class="app-name">Guest book</p>
+        </template>
+      </Application>
+      <Application
+        :x="212"
+        :y="180"
+        name="settings"
+        persist-position-key="portfolio:icon:v1:settings"
+      >
+        <template #icon>
+          <img src="@/assets/settings.svg" alt="" />
+        </template>
+        <template #title>
+          <p class="app-name">Settings</p>
         </template>
       </Application>
       <div
@@ -129,7 +142,7 @@
 <script setup>
 import Application from './Application.vue'
 import AllModals from './AllModals.vue'
-import eventBus from '@/eventBus'
+import eventBus from '@/classic/eventBus'
 import { onUnmounted, ref } from 'vue'
 
 const applicationsElement = ref(null)

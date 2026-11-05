@@ -2,6 +2,20 @@
 
 My personal website + blog + Photo gallery 
 
+The site has two desktop themes, switchable from **Settings** (desktop icon or Start menu);
+the choice is stored in `localStorage` under `portfolio:theme`. `src/App.vue` lazy-loads
+the selected desktop; `src/theme.js` holds the theme list and state.
+
+- **Classic** (default, `src/classic/`): the original teal desktop.
+- **Windows XP** (`src/xp/`): built with
+  [`@hamza221/wxp`](https://www.npmjs.com/package/@hamza221/wxp), a Windows XP Luna
+  component library licensed GPL-3.0-or-later. `src/xp/XpDesktop.vue` declares every app
+  as an `xp-window`; wxp owns window state, and page content mounts only while a window
+  is open.
+
+Shared pages (Résumé, Settings) live in `src/pages/`; theme-specific pages live under
+each theme directory.
+
 ## Guest book
 
 Run `npm ci` and `npm run dev`, then open **Guest book** from the desktop or Start menu.

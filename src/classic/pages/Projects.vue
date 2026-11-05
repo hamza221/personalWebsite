@@ -9,7 +9,7 @@
     <nav class="projects__apps" aria-label="Projects">
       <Application :movable="false" name="fennec" href="https://getfennec.app/">
         <template #icon>
-          <img src="../assets/fennec-logo.png" alt="" />
+          <img src="@/assets/fennec-logo.png" alt="" />
         </template>
         <template #title>
           <p>Fennec</p>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import Application from '@/components/Application.vue'
+import Application from '@/classic/components/Application.vue'
 </script>
 
 <style lang="scss" scoped>

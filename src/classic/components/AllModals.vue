@@ -140,6 +140,20 @@
         <GuestBook />
       </template>
     </Modal>
+    <Modal
+      v-if="settings.isOpen"
+      name="settings"
+      title="Settings"
+      :x="260"
+      :y="100"
+      :minimized="settings.isMinimized"
+      :z-index="settings.zIndex"
+      @activate="activate('settings')"
+    >
+      <template #content>
+        <Settings />
+      </template>
+    </Modal>
   </div>
 </template>
 <script setup>
@@ -147,15 +161,16 @@ import Modal from './Modal.vue'
 import Welcome from '../pages/Welcome.vue'
 import Contact from '../pages/Contact.vue'
 import ComingSoon from '../pages/ComingSoon.vue'
-import Resume from '../pages/Resume.vue'
+import Resume from '@/pages/Resume.vue'
 import Experiments from '../pages/Experiments.vue'
 import Projects from '../pages/Projects.vue'
 import MiscLinks from '../pages/MiscLinks.vue'
 import Snake from '../pages/Snake.vue'
 import GuestBook from '../pages/GuestBook.vue'
-import eventBus from '@/eventBus'
+import Settings from '@/pages/Settings.vue'
+import eventBus from '@/classic/eventBus'
 import { computed, onUnmounted } from 'vue'
-import { useModalsStore } from '@/stores/modals'
+import { useModalsStore } from '@/classic/stores/modals'
 
 const modalsStore = useModalsStore()
 
@@ -169,6 +184,7 @@ const projects = computed(() => modalsStore.getModal('projects'))
 const miscLinks = computed(() => modalsStore.getModal('misc-links'))
 const snake = computed(() => modalsStore.getModal('snake'))
 const guestbook = computed(() => modalsStore.getModal('guestbook'))
+const settings = computed(() => modalsStore.getModal('settings'))
 
 const onMinimize = (payload) => modalsStore.minimizeModal(payload.name, true)
 const onOpen = (payload) => {

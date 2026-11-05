@@ -17,7 +17,7 @@ import Clock from './Clock.vue'
 import Minimized from './Minimized.vue'
 import QuickLinks from './QuickLinks.vue'
 import { computed } from 'vue'
-import { useModalsStore } from '@/stores/modals'
+import { useModalsStore } from '@/classic/stores/modals'
 
 defineProps({
   startMenuOpen: {

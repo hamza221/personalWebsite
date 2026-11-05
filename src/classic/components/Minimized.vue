@@ -4,7 +4,7 @@
   </button>
 </template>
 <script setup>
-import eventBus from '@/eventBus'
+import eventBus from '@/classic/eventBus'
 const props = defineProps({
   name: {
     type: String,

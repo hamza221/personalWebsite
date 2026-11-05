@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import eventBus from '@/eventBus'
+import eventBus from '@/classic/eventBus'
 
 const openApp = (name) => eventBus.emit('openApp', { name })
 </script>

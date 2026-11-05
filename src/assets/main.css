@@ -1,28 +1,8 @@
-:root {
-  --tertiary-color: silver;
-  --border-white-color: rgb(255 255 255);
-  --background-main: rgb(0 128 128);
-  --button-border-color: rgb(156 163 175);
-  --border-gray: rgb(107 114 128);
-  --green: rgb(22 163 74);
-  --blue: navy;
-}
-@font-face {
-  font-family: "px_sans_nouveaux";
-  src: url("../assets/px_sans_nouveaux.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-* {
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
-  padding: 0px;
-  margin: 0px;
-  font-family: "px_sans_nouveaux";
-}
 html,
 body,
 #app {
@@ -30,15 +10,7 @@ body,
   height: 100%;
   overflow: hidden;
 }
-button {
-  color: inherit;
-}
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid #ffdf00;
-  outline-offset: 2px;
-}
+
 img {
-  height: 100%;
   max-width: 100%;
 }
