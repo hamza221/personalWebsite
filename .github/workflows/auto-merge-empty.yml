@@ -21,7 +21,7 @@ jobs:
     steps:
       # Both events have a write token. Never check out PR code or download its artifacts.
       - name: Merge only a verified empty PR
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const run = context.payload.workflow_run;
